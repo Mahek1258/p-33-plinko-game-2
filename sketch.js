@@ -92,10 +92,6 @@ function draw() {
    }
  
    //displaying particles
-  for (var j = 0; j < particles.length; j++) {
-   
-     particles[j].display();
-   }
 
    //displaying divisions
    for (var k = 0; k < divisions.length; k++) {
@@ -115,18 +111,14 @@ function draw() {
         if(count >= 5){
           gameState = "end";
         }
-      }
-
-       if(particle.body.position.x < 300){
+      }else if(particle.body.position.x < 300){
          score = score + 500;
          particle = null;
 
          if(count >= 5){
            gameState = "end";
          }
-       }
-
-       if(particle.body.position.x < 601 && particle.body.position.x > 900){
+        }else if(particle.body.position.x < 601 && particle.body.position.x > 900){
         score = score + 200;
         particle = null;
 
@@ -142,7 +134,6 @@ function draw() {
      fontSize(50);
     text("Game Over" , 400 , 300)
    }
-   mousePressed();
 }
 function mousePressed(){
   if(gameState !== "end"){
