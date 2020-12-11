@@ -6,7 +6,6 @@ const Bodies = Matter.Bodies;
  //world and engine variables
  var world, engine;
   //particles,plingoes,division arrays and ground variable
-var particles = [];
 var plinkos = [];
 var divisions = [];
 var ground;
@@ -91,6 +90,7 @@ function draw() {
      
    }
  
+   ground.display();
    //displaying particles
 
    //displaying divisions
@@ -104,7 +104,7 @@ function draw() {
 
      if(particle.body.position.y > 760){
 
-      if(particle.body.position.x < 301 && particle.body.position.x > 600){
+      if(particle.body.position.x > 301 && particle.body.position.x < 600){
         score = score + 100;
         particle = null;
 
@@ -118,7 +118,7 @@ function draw() {
          if(count >= 5){
            gameState = "end";
          }
-        }else if(particle.body.position.x < 601 && particle.body.position.x > 900){
+        }else if(particle.body.position.x > 601 && particle.body.position.x < 900){
         score = score + 200;
         particle = null;
 
@@ -130,14 +130,15 @@ function draw() {
      }
    }
 
+
    if(gameState === "end"){
-     fontSize(50);
+     textSize(50);
     text("Game Over" , 400 , 300)
    }
 }
 function mousePressed(){
   if(gameState !== "end"){
     count++;
-    paticle = new Particle(mouseX ,10 ,10 ,10);
+    particle = new Particle(mouseX ,10 ,10 );
   }
 }
